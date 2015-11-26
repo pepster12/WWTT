@@ -1,5 +1,3 @@
-#include <stdio.h> //lkajskdlf
-#include <stdlib.h> //zmieniam pierwsza linike
 #include <time.h>
 
 void show(char tab[][3]);
