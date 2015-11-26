@@ -1,217 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-void show(char tab[][3]);
-void numeracja();
-void wyzerowanie(char tab[][3]);
-void gracz(char tab[][3], char znak);
-void komputer(char tab[][3], char znak);
-char sprawdzenie(char tab[][3], char znakk, char znakg);
+#include<iostream.h>
 
 
-int main(void)
+
+float brutto(float c,float procent)
 {
-
-  char plansza[3][3];
-  int i, j;
-  char wyborznaku;
-  char znakg;
-  char znakk;
-  char wybor;
-  int k;
-
-do
-{
-  wyzerowanie(plansza);
-  printf("\n\n\t\tKOLKO i KRZYZYK\n\n\n");
-  printf("Wolisz grac kolkiem 0 czy krzyzykiem X: ");
-  scanf("%c",&wyborznaku);
-  while ( getchar() != '\n')
-     continue;
-
-  while ( wyborznaku != 'X' && wyborznaku != '0' && wyborznaku != 'x' && wyborznaku != 'O' )
-  {
-     printf("Wybierz X lub 0: ");
-     scanf("%c",&wyborznaku);
-     while ( getchar() != '\n')
-        continue;
-  }
-
-  if (wyborznaku == 'X' || wyborznaku == 'x')
-  {
-    znakg = 'X';
-    znakk = '0';
-    printf("\n\n Grasz wiec krzyzykiem:   X\n\n");
-  }
-  else
-  {
-    znakg = '0';
-    znakk = 'X';
-    printf("\n Grasz wiec kolkiem:   0\n\n");
-  }
-
-
-  k = 0;
-  numeracja();
-
-  while ((sprawdzenie(plansza,znakk, znakg) != znakg) && (sprawdzenie(plansza,znakk, znakg) != znakk) && ( k < 9) )
-  {
-    if (k%2==0)
-    {
-        show(plansza);
-        gracz(plansza, znakg);
-    }
-    else
-    {
-        komputer(plansza, znakk);
-    }
-  k++;
-  }
-
-
-
-
-  show(plansza);
-
-  if (sprawdzenie(plansza,znakk, znakg) == znakg)
-      printf("\n\nGratulacje wygrales !!!\n");
-  else if (sprawdzenie(plansza,znakk, znakg) == znakk)
-  {
-      printf("\n\nNiestety poniosles porazke !!!\n");
-  }
-  else
-    printf("\n\nRemis !!!\n\n");
-
-  getchar();
-  do
-  {
-    printf("\n\nCzy chcesz zagrac ponownie??(t\\n) : ");
-    scanf("%c",&wybor);
-    while (getchar() != '\n')
-        continue;
-  } while (wybor != 'N' && wybor != 'n' && wybor != 'T' && wybor != 't');
-
-
-} while (wybor != 'N' && wybor != 'n');
-
-
-  printf("\n\nKONIEC PROGRAMU ...  DO ZOBACZENIA!!!!\n\n");
-  return 0;
-}///////////////////////////////////////////////////////////////////////
-
-char sprawdzenie(char tab[][3],char znakk, char znakg)
-{
-  int i;
-
-    for (i = 0; i < 3; i++)
-    {
-        if ( ( (tab[i][0]== znakg) && (tab[i][1]== znakg) && (tab[i][2]==znakg))||
-             ((tab[0][i]== znakg) && (tab[1][i]== znakg) && (tab[2][i]==znakg)))
-            return znakg;
-
-        if ( ((tab[i][0] == znakk) && (tab[i][1] == znakk) && (tab[i][2]== znakk))||
-             ((tab[0][i]== znakk) && (tab[1][i]== znakk) && (tab[2][i]==znakk)))
-            return znakk;
-    }
-
-    if ( ((tab[0][0] == znakg) &&  (tab[1][1] == znakg) && (tab[2][2] == znakg))||
-         ((tab[0][2] == znakg) && (tab[1][1] == znakg) && (tab[2][0] == znakg)))
-        return znakg;
-
-    if ( ((tab[0][0] == znakk) &&  (tab[1][1] == znakk) && (tab[2][2] == znakk)) ||
-         ((tab[0][2] == znakk) &&  (tab[1][1] == znakk) && (tab[2][0] == znakk)))
-        return znakk;
-
-    return 'W';
+return c=c+(c*procent/100);
 }
 
-void wyzerowanie(char tab[][3])
+main()
 {
-  int i, j;
-  for (i = 0; i < 3; i++)
-  {
-    for (j = 0; j < 3; j++)
-    {
-       tab[i][j] = ' ';
-    }
-  }
+
+float netto;
+float proc;
+cout<<"Podaj cene Netto : ";
+cin>>netto;
+cout<<"Podaj procent : ";
+cin>>proc;
+cout<<endl;
+cout<<"Cena Brutto = "<<brutto(netto,proc);
+
+
 
 }
 
 
-void komputer(char tab[][3], char znak)
-{
-    srand(time(NULL));
-    int pole, i, j;
-    pole = rand()%9+1;
-    i = (pole-1)/3;
-    j = (pole-1)%3;
-    while (pole < 1 || pole > 9 || tab[i][j] != ' ')
-    {
-        pole = rand()%9+1;
-        i = (pole-1)/3;
-        j = (pole-1)%3;
-    }
-    tab[i][j] = znak;
-
-}
-
-void gracz(char tab[][3], char znak)
-{
-    int pole, i, j;
-    printf("\nWybierz pole: ");
-    scanf("%d",&pole);
-    i = (pole-1)/3;
-    j = (pole-1)%3;
-    while (pole < 1 || pole > 9 || tab[i][j] != ' ' )
-    {
-        printf("\nWybierz pole: ");
-        scanf("%d",&pole);
-            i = (pole-1)/3;
-            j = (pole-1)%3;
-    }
-    tab[i][j] = znak;
-}
-
-void numeracja()
-{
-  int i,j, licznik = 1;
-  printf("\nDokonuj wyboru pola zgodnie z ponizsza numeracja: \n\n");
-  for (i = 0; i < 3; i++)
-  {
-    printf("\t\t\t");
-    for (j = 0; j < 3; j++,licznik++)
-    {
-       printf(" %d ",licznik);
-       if (j != 2)
-         printf("|");
-    }
-
-  if (i != 2)
-    printf("\n\t\t\t-----------");
-  printf("\n");
-  }
-}
 
 
-void show(char tab[][3])
-{
-  int i,j;
-  printf("\n");
-  for (i = 0; i < 3; i++)
-  {
-    printf("\t");
-    for (j = 0; j < 3; j++)
-    {
-       printf(" %c ",tab[i][j]);
-       if (j != 2)
-         printf("|");
-    }
 
-  if (i != 2)
-    printf("\n\t-----------");
-  printf("\n");
-  }
-}
 
+
+
+
+
+
+
+//algorytm sciagniety ze strony http://PlayCOM.w.interia.pl
