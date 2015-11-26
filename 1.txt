@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h> //adksfdjaskljasdfjkldfasj
+#include <stdio.h> 
+#include <stdlib.h> //zmieniam pierwsza linike
 #include <time.h>
 
 void show(char tab[][3]);
