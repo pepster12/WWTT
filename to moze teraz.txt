@@ -1,0 +1,40 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<string.h>
+
+
+main()
+{
+char napis[255];
+cout<<"Wpisz jakies zdanie !!"<<endl;
+cout<<" : ";
+gets(napis);
+
+int ilosc=0; //ilosc spacji
+for (int i=0;i<strlen(napis)-1;i++)
+	 {
+	 if ((napis[i]==' ')&(napis[i+1]!=' '))  { ilosc++;}
+	 }
+cout<<"Zdanie sklada sie z "<<ilosc+1<<" wyrazow.";
+
+}
+
+// program liczy ilosc wyrazow w zdaniu.
+// skuteczny bezbledny sposob liczenia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//algorytm sciagniety ze strony http://PlayCOM.w.interia.pl
