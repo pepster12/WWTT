@@ -1,5 +1,5 @@
 #include <stdio.h>//AIAGJOIDSJGRESW
-#include <stdlib.h>
+#include <stdlib.h>//346gerwsgrfs
 #include <time.h>
 
 void show(char tab[][3]);
