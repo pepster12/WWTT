@@ -1,0 +1,33 @@
+# include <iostream.h>
+# include <stdio.h>
+# include <math.h>
+
+main()
+{
+double kat1,kat2;
+cout<<"Podaj kat 1 : ";
+cin>>kat1;
+cout<<"Podaj kat 2 : ";
+cin>>kat2;
+
+printf("Atan2 kata wynosi : %lf\n", atan2(kat1,kat2));
+return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//algorytm sciagniety ze strony http://PlayCOM.w.interia.pl
