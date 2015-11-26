@@ -9,7 +9,7 @@ void gracz(char tab[][3], char znak);
 void komputer(char tab[][3], char znak);
 char sprawdzenie(char tab[][3], char znakk, char znakg);
 
-
+zmianiam pliki
 int main(void)
 {
 
